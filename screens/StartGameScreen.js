@@ -1,31 +1,31 @@
 // 시작 화면 역할을 할 컴포넌트가 들어감
 import { useState } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
-function StartGameScreen({onPickNumber}) {
-  const [enteredNumber, setEnteredNumber] = useState('');
+function StartGameScreen({ onPickNumber }) {
+  const [enteredNumber, setEnteredNumber] = useState("");
 
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText);
   }
 
   function resetInputHandler() {
-    setEnteredNumber('')
+    setEnteredNumber("");
   }
 
   function confirmInputHanlder() {
     const chosenNumber = parseInt(enteredNumber);
 
-    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99)
-    {
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(
-        '유효하지 않은 숫자입니다!', 
-        '숫자는 1이상 99이하여야 합니다.',
-        [{text:'Okay', style:'destructive', onPress: resetInputHandler}]);
+        "유효하지 않은 숫자입니다!",
+        "숫자는 1이상 99이하여야 합니다.",
+        [{ text: "Okay", style: "destructive", onPress: resetInputHandler }]
+      );
       return;
     }
-    
+
     onPickNumber(chosenNumber);
   }
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
   },
-  buttonContainer : {
-    flex : 1
-  }
+  buttonContainer: {
+    flex: 1,
+  },
 });
