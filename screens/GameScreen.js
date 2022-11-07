@@ -1,9 +1,11 @@
 // 실질적으로 게임 진행과 관련된 컴포넌트들
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import NumberContainer from "../components/game/NumberContainer";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 // 따로 외부에서 가지고 온 코드임, 그냥 1~99 난수 생성기
 function generateRandomBetween(min, max, exclude) {
@@ -51,14 +53,13 @@ function GameScreen({ userNumber, onGameOver }) {
     <View style={styles.screen}>
       <Title>상대방의 추측</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher OR Lower?</Text>
+      <Card>
+        <InstructionText>Higher OR Lower?</InstructionText>
         <View>
           <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
           <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryButton>
         </View>
-      </View>
-      <View></View>
+      </Card>
     </View>
   );
 }
